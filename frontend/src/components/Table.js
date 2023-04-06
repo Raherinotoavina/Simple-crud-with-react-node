@@ -8,19 +8,19 @@ const Table = () => {
                 <tr>
                     <th>Numero</th>
                     <th>Photo</th>
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Date de naissance</th>
-                    <th>Date d integration</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
                     <th>Operation</th>
                 </tr>
                 <tr>
                     <td>201</td>
-                    <td></td>
-                    <td>RAHERINOTOAVINA</td>
-                    <td>Safidy Mariel</td>
-                    <td>27/03/2001</td>
-                    <td>12/02/2015</td>
+                    <td><img src={require("../assets/food/pexels-andre-saddi-13985154.jpg")} width="40px" height="40px" alt="" /></td>
+                    <td>Pizza</td>
+                    <td>1500 || Ar</td>
+                    <td>23</td>
+                    <td>In Stock</td>
                     <td>
                         <span><reactFiver.Edit2 className="icon edit"/></span>
                         <span><reactFiver.Trash2 className="icon delete"/></span>
@@ -28,11 +28,11 @@ const Table = () => {
                 </tr>
                 <tr>
                     <td>201</td>
-                    <td></td>
-                    <td>RAHERINOTOAVINA</td>
-                    <td>Safidy Mariel</td>
-                    <td>27/03/2001</td>
-                    <td>12/02/2015</td>
+                    <td><img src={require("../assets/food/pexels-anna-tukhfatullina-food-photographerstylist-2702674.jpg")} width="40px" height="40px" alt="" /></td>
+                    <td>Pizza</td>
+                    <td>1500 || Ar</td>
+                    <td>23</td>
+                    <td>In Stock</td>
                     <td>
                         <span><reactFiver.Edit2 className="icon edit"/></span>
                         <span><reactFiver.Trash2 className="icon delete"/></span>
@@ -40,11 +40,11 @@ const Table = () => {
                 </tr>
                 <tr>
                     <td>201</td>
-                    <td></td>
-                    <td>RAHERINOTOAVINA</td>
-                    <td>Safidy Mariel</td>
-                    <td>27/03/2001</td>
-                    <td>12/02/2015</td>
+                    <td><img src={require("../assets/food/pexels-jan-n-g-u-y-e-n-🍁-699953.jpg")} width="40px" height="40px" alt="" /></td>
+                    <td>Pizza</td>
+                    <td>1500 || Ar</td>
+                    <td>23</td>
+                    <td>In Stock</td>
                     <td>
                         <span><reactFiver.Edit2 className="icon edit"/></span>
                         <span><reactFiver.Trash2 className="icon delete"/></span>
@@ -52,59 +52,11 @@ const Table = () => {
                 </tr>
                 <tr>
                     <td>201</td>
-                    <td></td>
-                    <td>RAHERINOTOAVINA</td>
-                    <td>Safidy Mariel</td>
-                    <td>27/03/2001</td>
-                    <td>12/02/2015</td>
-                    <td>
-                        <span><reactFiver.Edit2 className="icon edit"/></span>
-                        <span><reactFiver.Trash2 className="icon delete"/></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>201</td>
-                    <td></td>
-                    <td>RAHERINOTOAVINA</td>
-                    <td>Safidy Mariel</td>
-                    <td>27/03/2001</td>
-                    <td>12/02/2015</td>
-                    <td>
-                        <span><reactFiver.Edit2 className="icon edit"/></span>
-                        <span><reactFiver.Trash2 className="icon delete"/></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>201</td>
-                    <td></td>
-                    <td>RAHERINOTOAVINA</td>
-                    <td>Safidy Mariel</td>
-                    <td>27/03/2001</td>
-                    <td>12/02/2015</td>
-                    <td>
-                        <span><reactFiver.Edit2 className="icon edit"/></span>
-                        <span><reactFiver.Trash2 className="icon delete"/></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>201</td>
-                    <td></td>
-                    <td>RAHERINOTOAVINA</td>
-                    <td>Safidy Mariel</td>
-                    <td>27/03/2001</td>
-                    <td>12/02/2015</td>
-                    <td>
-                        <span><reactFiver.Edit2 className="icon edit"/></span>
-                        <span><reactFiver.Trash2 className="icon delete"/></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>201</td>
-                    <td></td>
-                    <td>RAHERINOTOAVINA</td>
-                    <td>Safidy Mariel</td>
-                    <td>27/03/2001</td>
-                    <td>12/02/2015</td>
+                    <td><img src={require("../assets/food/pexels-robin-stickel-70497.jpg")} width="40px" height="40px" alt="" /></td>
+                    <td>Pizza</td>
+                    <td>1500 || Ar</td>
+                    <td>23</td>
+                    <td>In Stock</td>
                     <td>
                         <span><reactFiver.Edit2 className="icon edit"/></span>
                         <span><reactFiver.Trash2 className="icon delete"/></span>

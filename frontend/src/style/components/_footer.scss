@@ -1,0 +1,15 @@
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 40px;
+    padding-block: 30px;
+    box-shadow: $shadow-y;
+    margin-inline: 10%;
+}
+.copyright {
+    font-size: $fs-m;
+}
+.pagination button {
+    margin-inline: 10px;
+}
