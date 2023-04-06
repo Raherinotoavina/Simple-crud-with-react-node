@@ -1,0 +1,25 @@
+.table {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+.table th {
+    text-align: center;
+    font-size: 13px;
+    padding-block: 15px;
+    padding-inline: 20px;
+}
+.table td {
+    text-align: center;
+    font-size: 12px;
+    padding-block: 10px;
+    padding-inline: 20px;
+}
+.edit {
+    color: rgba(34, 34, 186, 0.771);
+    padding-right: 10px;
+}
+.delete {
+    color: rgb(255, 162, 0);
+    padding-left: 10px;
+}

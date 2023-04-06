@@ -1,0 +1,14 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: $shadow-bold;
+    padding-block: 10px;
+}
+.icon {
+    color: $grey-icon;
+    cursor: pointer;
+}
+.header__title {
+    color: $dark;
+}
