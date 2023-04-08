@@ -6,15 +6,15 @@ import Footer from "./components/Footer";
 import Modale from "./components/Modale";
 
 const App = () => {
-    const [modale, setModale] = useState(true);
+    const [modale, setModale] = useState(false);
 
     return (
         <div className="app">
             <Header />
             <SearchBar />
             <Table />
-            <Footer />
-            {modale && <Modale />}
+            <Footer setModale={setModale}/>
+            {modale && <Modale setModale={setModale}/>}
         </div>
     )
 }

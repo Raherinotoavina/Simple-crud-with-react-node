@@ -22,6 +22,10 @@ const foodSchema = new mongoose.Schema({
         type : String,
     }
 })
+// Ajout du slug
+foodSchema.pre("save", function () {
+    this.slug = slugify(this.name, {lower:true}); 
+})
 
 const Food = mongoose.model("Foods", foodSchema);
 module.exports = Food;

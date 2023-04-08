@@ -1,6 +1,6 @@
 import React from "react";
 
-const Modale = () => {
+const Modale = ({modale, setModale}) => {
     return (
         <section>
             <form className="modale">
@@ -17,10 +17,6 @@ const Modale = () => {
                     <input type="number" id="quantity" className="input" placeholder="enter quantity"/>
                 </div>
                 <div>
-                    <label htmlFor="name" className="label">Quantity</label>
-                    <input type="number" className="input" id="name" placeholder="enter name"/>
-                </div>
-                <div>
                     <input type="file" id="photo" className="select"/>
                     <div className="modale__btn">
                         <label htmlFor="photo" className="fileInput label">Choose a photo</label>
@@ -28,7 +24,7 @@ const Modale = () => {
                     </div>
                 </div>
             </form>
-            <div className="overlay"></div>
+            <div className="overlay" onClick={() => setModale(false)}></div>
         </section>
     )
 }
