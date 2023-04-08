@@ -7,6 +7,7 @@ const multerStorage = multer.memoryStorage();
 const upload = multer({storage : multerStorage});
 exports.canUploadPhoto = upload.single('photo');
 
+// 1) CREATING FOOD
 exports.uploadPhoto = async (req, res, next) => {
     try {
         // If a user have a photo
@@ -49,6 +50,25 @@ exports.createFood = async (req, res) => {
             }
         })
     } catch (err) {
+        res.status(402).json({
+            status : "failed",
+            message : err.message
+        })
+    }
+}
+
+// 2) GETTING FOOD
+exports.getFood =async (req, res) => {
+    try {
+        const foods = await Food.find();
+
+        res.status(200).json({
+            status : "success",
+            data : {
+                foods 
+            }
+        })
+    } catch(err) {
         res.status(402).json({
             status : "failed",
             message : err.message
