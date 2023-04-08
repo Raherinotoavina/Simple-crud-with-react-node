@@ -1,68 +1,45 @@
 import React from "react";
 import * as reactFiver from "react-feather";
 
-const Table = () => {
+const Table = ({foods, loading}) => {
     return (
         <div className="liste">
-            <table className="table">
-                <tr>
-                    <th>Numero</th>
-                    <th>Photo</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Status</th>
-                    <th>Operation</th>
-                </tr>
-                <tr>
-                    <td>201</td>
-                    <td><img src={require("../assets/food/pexels-andre-saddi-13985154.jpg")} width="40px" height="40px" alt="" /></td>
-                    <td>Pizza</td>
-                    <td>1500 || Ar</td>
-                    <td>23</td>
-                    <td>In Stock</td>
-                    <td>
-                        <span><reactFiver.Edit2 className="icon edit"/></span>
-                        <span><reactFiver.Trash2 className="icon delete"/></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>201</td>
-                    <td><img src={require("../assets/food/pexels-anna-tukhfatullina-food-photographerstylist-2702674.jpg")} width="40px" height="40px" alt="" /></td>
-                    <td>Pizza</td>
-                    <td>1500 || Ar</td>
-                    <td>23</td>
-                    <td>In Stock</td>
-                    <td>
-                        <span><reactFiver.Edit2 className="icon edit"/></span>
-                        <span><reactFiver.Trash2 className="icon delete"/></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>201</td>
-                    <td><img src={require("../assets/food/pexels-jan-n-g-u-y-e-n-🍁-699953.jpg")} width="40px" height="40px" alt="" /></td>
-                    <td>Pizza</td>
-                    <td>1500 || Ar</td>
-                    <td>23</td>
-                    <td>In Stock</td>
-                    <td>
-                        <span><reactFiver.Edit2 className="icon edit"/></span>
-                        <span><reactFiver.Trash2 className="icon delete"/></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>201</td>
-                    <td><img src={require("../assets/food/pexels-robin-stickel-70497.jpg")} width="40px" height="40px" alt="" /></td>
-                    <td>Pizza</td>
-                    <td>1500 || Ar</td>
-                    <td>23</td>
-                    <td>In Stock</td>
-                    <td>
-                        <span><reactFiver.Edit2 className="icon edit"/></span>
-                        <span><reactFiver.Trash2 className="icon delete"/></span>
-                    </td>
-                </tr>
-            </table>
+            {loading && 
+                <div className="loading">
+                    <reactFiver.Loader className="loading"/>
+                </div>
+            }
+            {!loading && 
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>Numero</th>
+                            <th>Photo</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Status</th>
+                            <th>Operation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {foods.map((food, index) => (
+                            <tr key={index}>
+                                <td>{index + 1}</td>
+                                <td><img src={require(`../assets/food/${food.photo}.jpeg`)} width="40px" alt="" /></td>
+                                <td>{food.name}</td>
+                                <td>{food.price}</td>
+                                <td>{food.quantity}</td>
+                                <td>{food.quantity>0 ? "in stock" : "out stock"}</td>
+                                <td>
+                                    <span><reactFiver.Edit2 className="icon edit"/></span>
+                                    <span><reactFiver.Trash2 className="icon delete"/></span>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            } 
         </div>
     )
 }
