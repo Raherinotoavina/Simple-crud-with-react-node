@@ -1,10 +1,12 @@
 .modale {
+    padding: 30px;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
     z-index: 1;
+    box-shadow: 1px 2px 10px rgba(97, 96, 96, 0.487);
 }
 .overlay {
     position: fixed;
@@ -13,4 +15,38 @@
     right: 0;
     bottom: 0;
     backdrop-filter: blur(3px);
+}
+.modale .input{
+    width: 95%;
+    padding: 8px;
+    border: none;
+    box-shadow: $shadow-fin;
+}
+.modale .select{
+    visibility: hidden;
+}
+.label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+.fileInput {
+    text-align: center;
+    align-items: center;
+    background-color: $blue;
+    width: 50%;
+    padding-block: 10px;
+    cursor: pointer;
+    color: white;
+}
+.modale__btn {
+    display: flex;
+    align-items: center;  
+    justify-content: space-between;  
+}
+.btn-valider {
+    margin-top: 10px;
+    padding-block: 12px;
+    background-color: $success;
+    border-radius: 0;
 }
