@@ -23,7 +23,7 @@ exports.uploadPhoto = async (req, res, next) => {
             .resize(500,500)
             .toFormat('jpeg')
             .jpeg({quality : 100})
-            .toFile(`../frontend/src/assets/food/${req.file.filename}.jpeg`);
+            .toFile(`./public/food/${req.file.filename}.jpeg`);
 
         next();
     } catch (err) {

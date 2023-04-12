@@ -17,7 +17,7 @@ const App = () => {
             <SearchBar setData={setData}/>
             <Table foods={data ? data.foods : []} loading={loading}/>
             <Footer setModale={setModale}/>
-            {modale && <Modale setModale={setModale} setData={setData}/>}
+            {modale && <Modale setModale={setModale} setData={setData} data={data}/>}
         </div>
     )
 }
