@@ -82,3 +82,19 @@ exports.getFood =async (req, res) => {
         })
     }
 }
+
+// 3) DELETING FOOD
+exports.deleteFood = async (req, res) => {
+    try {
+        await Food.findByIdAndDelete(req.params.id);
+        res.status(202).json({
+            status : "success",
+            message : "Food Deleted"
+        })
+    } catch(err) {
+        res.status(402).json({
+            status : "fail",
+            message : err.message
+        })
+    }
+}

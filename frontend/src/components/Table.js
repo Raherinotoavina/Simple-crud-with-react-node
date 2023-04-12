@@ -1,7 +1,12 @@
 import React from "react";
 import * as reactFiver from "react-feather";
 
-const Table = ({foods, loading}) => {
+const Table = ({data, loading, deleteFood}) => {
+    const handleDelete = (e) => {
+        e.preventDefault();
+        const id = document.querySelector(".delete").getAttribute("href");
+        deleteFood(id);
+    }
     
     return (
         <div className="liste">
@@ -24,17 +29,17 @@ const Table = ({foods, loading}) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {foods.map((food, index) => (
+                        {data.map((food, index) => (
                             <tr key={index}>
                                 <td>{index + 1}</td>
-                                <td><img src={`http://127.0.0.1:8000/food/${food.photo}`} loading="lazy" width="40px" alt="" /></td>
+                                <td><img src={`http://127.0.0.1:8000/food/${food.photo}?${Date.now()}`} loading="lazy" width="40px" alt="" /></td>
                                 <td>{food.name}</td>
                                 <td>{food.price}</td>
                                 <td>{food.quantity}</td>
                                 <td>{food.quantity>0 ? "in stock" : "out stock"}</td>
                                 <td>
-                                    <span><reactFiver.Edit2 className="icon edit"/></span>
-                                    <span><reactFiver.Trash2 className="icon delete"/></span>
+                                    <reactFiver.Edit2 className="icon edit"/>
+                                    <a href={food._id} className="delete" onClick={handleDelete}><reactFiver.Trash2 onClick={handleDelete} className="icon delete"/></a>
                                 </td>
                             </tr>
                         ))}

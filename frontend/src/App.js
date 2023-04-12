@@ -5,19 +5,50 @@ import SearchBar from "./components/SearchBar";
 import Table from "./components/Table";
 import Footer from "./components/Footer";
 import Modale from "./components/Modale";
-import useFetch from "./hooks/useFetch";
+import axios from "axios";
 
 const App = () => {
     const [modale, setModale] = useState(false);
-    const {data, loading, setData} = useFetch("http://127.0.0.1:8000/api/food/getAll"); 
+    const [foods, setFoods] = useState([]);
+    const [forceFetch, setForceFecth] = useState(false);
+    const foodsRef = useRef(foods);
+
+    useEffect(() => {
+        const fetchData = async() => {
+            const res = await axios({
+                method : "get",
+                url : "http://127.0.0.1:8000/api/food/getAll"
+            })
+            const allFoods = res.data.data.foods;
+            setFoods(allFoods);
+        }
+        fetchData()
+    }, [foodsRef, forceFetch])
+
+    const addFood = async (data) => {
+        await axios({
+            url : "http://127.0.0.1:8000/api/food/createFood",
+            method : "post",
+            data
+        })
+        setForceFecth(!forceFetch)
+    }
+
+    const deleteFood = async (id) => {
+        await axios({
+            method : "delete",
+            url : `http://127.0.0.1:8000/api/food/deleteFood/${id}`
+        })
+        setForceFecth(!forceFetch)
+    }
 
     return (
         <div className="app">
             <Header />
-            <SearchBar setData={setData}/>
-            <Table foods={data ? data.foods : []} loading={loading}/>
+            <SearchBar/>
+            <Table data={foods} deleteFood={deleteFood}/>
             <Footer setModale={setModale}/>
-            {modale && <Modale setModale={setModale} setData={setData} data={data}/>}
+            {modale && <Modale setModale={setModale} addFood={addFood}/>}
         </div>
     )
 }

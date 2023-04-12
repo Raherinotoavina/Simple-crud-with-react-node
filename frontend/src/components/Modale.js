@@ -1,8 +1,7 @@
 import React, {useEffect, useRef} from "react";
 import axios from "axios";
-import useFetch from "../hooks/useFetch";
 
-const Modale = ({setModale}) => {
+const Modale = ({setModale, addFood}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const data = new FormData();
@@ -10,20 +9,9 @@ const Modale = ({setModale}) => {
         data.append("price", e.target.price.value);
         data.append("quantity", e.target.quantity.value);
         data.append("photo", e.target.photo.files[0]);
-    
-        const addFood = async () => {
-            try {
-                await axios({
-                    method : "post",
-                    url : "http://127.0.0.1:8000/api/food/createFood",
-                    data
-                })
-                setModale(false);
-            } catch(err) {
-                console.log(err);
-            }
-        }
-        addFood();
+
+        addFood(data);
+        setModale(false);
     }
 
     return (
