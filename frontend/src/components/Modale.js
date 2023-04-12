@@ -26,7 +26,6 @@ const Modale = ({setModale}) => {
         addFood();
     }
 
-
     return (
         <section>
             <form className="modale" onSubmit={handleSubmit}>

@@ -2,6 +2,7 @@ import React from "react";
 import * as reactFiver from "react-feather";
 
 const Table = ({foods, loading}) => {
+    
     return (
         <div className="liste">
             {loading && 
@@ -26,7 +27,7 @@ const Table = ({foods, loading}) => {
                         {foods.map((food, index) => (
                             <tr key={index}>
                                 <td>{index + 1}</td>
-                                <td><img src={require(`../../../backend/public/food/${food.photo}`)} loading="lazy" width="40px" alt="" /></td>
+                                <td><img src={`http://127.0.0.1:8000/food/${food.photo}`} loading="lazy" width="40px" alt="" /></td>
                                 <td>{food.name}</td>
                                 <td>{food.price}</td>
                                 <td>{food.quantity}</td>
