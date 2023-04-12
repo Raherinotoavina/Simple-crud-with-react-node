@@ -4,7 +4,17 @@ const sharp = require('sharp');
 
 // UPLOADING A PHOTO
 const multerStorage = multer.memoryStorage();
-const upload = multer({storage : multerStorage});
+const multerFilter = (req, file, cb) => {
+    if (file.mimetype.startsWith('image')) {
+        cb(null, true);
+    } else {
+        cb(new AppError("This not a image please upload only image",400), false);
+    }
+}
+const upload = multer({
+    storage : multerStorage,
+    fileFilter : multerFilter
+})
 exports.canUploadPhoto = upload.single('photo');
 
 // 1) CREATING FOOD
@@ -12,13 +22,10 @@ exports.uploadPhoto = async (req, res, next) => {
     try {
         // If a user have a photo
         if (!req.file) {
-            res.status(402).json({
-                status : "fail",
-                message : "You must drop a photo"
-            })
+            throw new Error("Drop a photo");
         }
 
-        req.file.filename = `food-${Date.now()}.jpeg`;
+        req.file.filename = `food-${Date.now()}`;
         sharp(req.file.buffer)
             .resize(500,500)
             .toFormat('jpeg')
@@ -27,7 +34,7 @@ exports.uploadPhoto = async (req, res, next) => {
 
         next();
     } catch (err) {
-        res.status(402).json({
+        res.status(404).json({
             status : "failed",
             message : err.message
         })
@@ -40,7 +47,7 @@ exports.createFood = async (req, res) => {
             name : req.body.name,
             price : req.body.price,
             quantity : req.body.quantity,
-            photo : req.file.filename
+            photo : `${req.file.filename}.jpeg`
         })
 
         res.status(200).json({

@@ -19,7 +19,6 @@ const Modale = ({setModale}) => {
                     data
                 })
                 setModale(false);
-                useFetch("http://127.0.0.1:8000/api/food/getAll");
             } catch(err) {
                 console.log(err);
             }

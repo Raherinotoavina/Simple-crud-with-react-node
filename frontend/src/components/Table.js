@@ -26,7 +26,7 @@ const Table = ({foods, loading}) => {
                         {foods.map((food, index) => (
                             <tr key={index}>
                                 <td>{index + 1}</td>
-                                <td><img src="" width="40px" alt="" /></td>
+                                <td><img src={require(`../../../backend/public/food/${food.photo}`)} loading="lazy" width="40px" alt="" /></td>
                                 <td>{food.name}</td>
                                 <td>{food.price}</td>
                                 <td>{food.quantity}</td>
