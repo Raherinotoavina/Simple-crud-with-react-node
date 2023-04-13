@@ -2,18 +2,14 @@ import React from "react";
 import * as reactFiver from "react-feather";
 
 const Table = ({data, loading, deleteFood, getOneFood}) => {
-    const handleDelete = (e) => {
-        e.preventDefault();
-        const id = document.querySelector(".delete").getAttribute("href");
+    const handleDelete = (id) => {
         deleteFood(id);
     }
 
-    const handleUpdate = (e) => {
-        e.preventDefault();
-        const id = document.querySelector(".delete").getAttribute("href");
+    const handleUpdate = (id) => {
         getOneFood(id);
     }
-    
+  
     return (
         <div className="liste">
             {loading && 
@@ -38,14 +34,14 @@ const Table = ({data, loading, deleteFood, getOneFood}) => {
                         {data.map((food, index) => (
                             <tr key={index}>
                                 <td>{index + 1}</td>
-                                <td><img src={`http://127.0.0.1:8000/food/${food.photo}?${Date.now()}`} loading="lazy" width="40px" alt="" /></td>
+                                <td><img src={`http://127.0.0.1:8000/food/${food.photo}?random=${Math.random()}`} loading="lazy" width="40px" alt="" /></td>
                                 <td>{food.name}</td>
                                 <td>{food.price}</td>
                                 <td>{food.quantity}</td>
                                 <td>{food.quantity>0 ? "in stock" : "out stock"}</td>
                                 <td>
-                                    <reactFiver.Edit2 onClick={handleUpdate} className="icon edit"/>
-                                    <a href={food._id} className="delete" onClick={handleDelete}><reactFiver.Trash2 onClick={handleDelete} className="icon delete"/></a>
+                                    <reactFiver.Edit2 onClick={() => handleUpdate(food._id)} data={food._id} className="icon edit"/>
+                                    <reactFiver.Trash2 onClick={() => handleDelete(food._id)} className="icon delete"/>
                                 </td>
                             </tr>
                         ))}

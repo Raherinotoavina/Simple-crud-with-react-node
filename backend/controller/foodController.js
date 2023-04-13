@@ -117,3 +117,46 @@ exports.getOneFood = async (req, res) => {
         })
     }
 }
+
+// UPDATING FOOD
+exports.updateFood = async (req, res) => {
+    try {
+        // 1) If the user don t drop a photo
+        const {name, price, quantity} = req.body;
+        let updatedUser = await Food.findByIdAndUpdate(
+            req.params.id, 
+            {name, price, quantity}, 
+            {runValidators:true, new:true}
+        );
+
+        // 2) If the user drop a photo
+        if (req.file) {
+            req.file.filename = `food-${Date.now()}`;
+
+            sharp(req.file.buffer)
+                .resize(500, 500)
+                .toFormat("jpeg")
+                .jpeg({quality : 100})
+                .toFile(`./public/food/${req.file.filename}.jpeg`);
+
+            updatedUser = await Food.findByIdAndUpdate(
+                req.params.id, 
+                {photo : `${req.file.filename}.jpeg`},
+                {runValidators:true, new:true}    
+            )
+        }
+
+        res.status(200).json({
+            status : "success",
+            data : {
+                updatedUser
+            }
+        })
+
+    } catch(err) {
+        res.status(402).json({
+            status : "fail",
+            message : err.message
+        })
+    }
+}

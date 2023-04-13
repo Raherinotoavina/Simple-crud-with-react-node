@@ -56,8 +56,18 @@ const App = () => {
     }
 
     // UpdateFood
-    const updateFood = async (id) => {
-        console.log(id)
+    const updateFood = async (id, data) => {
+        console.log(data);
+        try {
+            await axios({
+                method : "patch",
+                url : `http://127.0.0.1:8000/api/food/updateFood/${id}`,
+                data
+            })
+            setForceFecth(!forceFetch)
+        } catch(err) {
+            console.log(err);
+        }
     }
 
     return (
@@ -79,6 +89,7 @@ const App = () => {
                     setModale={setModale} 
                     addFood={addFood}
                     food={food}
+                    updateFood={updateFood}
             />}
         </div>
     )

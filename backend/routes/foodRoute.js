@@ -18,4 +18,8 @@ router
     .route("/deleteFood/:id")
     .delete(foodController.deleteFood)
 
+router
+    .route("/updateFood/:id")
+    .patch(foodController.canUploadPhoto,foodController.updateFood)
+
 module.exports = router
