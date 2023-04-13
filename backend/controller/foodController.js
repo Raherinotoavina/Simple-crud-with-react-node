@@ -67,7 +67,8 @@ exports.createFood = async (req, res) => {
 // 2) GETTING FOOD
 exports.getFood =async (req, res) => {
     try {
-        const foods = await Food.find();
+        const query = new RegExp(req.query.name, "i");
+        const foods = await Food.find({slug : query});
 
         res.status(200).json({
             status : "success",

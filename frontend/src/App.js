@@ -12,19 +12,20 @@ const App = () => {
     const [foods, setFoods] = useState([]);
     const [forceFetch, setForceFecth] = useState(false);
     const [food, setFood] = useState(null);
+    const [url, setUrl] = useState("http://127.0.0.1:8000/api/food/getAll");
 
     // Fecth Food
     useEffect(() => {
         const fetchData = async() => {
             const res = await axios({
                 method : "get",
-                url : "http://127.0.0.1:8000/api/food/getAll"
+                url
             })
             const allFoods = res.data.data.foods;
             setFoods(allFoods);
         }
         fetchData()
-    }, [forceFetch])
+    }, [url,forceFetch])
 
     // Add Food
     const addFood = async (data) => {
@@ -73,7 +74,9 @@ const App = () => {
     return (
         <div className="app">
             <Header />
-            <SearchBar/>
+            <SearchBar
+                setUrl={setUrl}
+            />
             <Table 
                 setModale={setModale} 
                 data={foods} 
