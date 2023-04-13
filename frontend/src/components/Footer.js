@@ -1,9 +1,13 @@
 import React from "react";
 
-const Footer = ({setModale}) => {
+const Footer = ({setModale, setFood}) => {
     return (
         <footer className="footer">
-            <button className="btn btn-blue" onClick={() => setModale(true)}>Add</button>
+            <button className="btn btn-blue" onClick={() => {
+                    setFood(null)
+                    setModale(true)
+                }
+            }>Add</button>
             <div className="copyright">&copy; RAHERINOTOAVINA safidy</div>
             <div className="pagination">
                 <button className="btn btn-warning">prev</button>

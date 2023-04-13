@@ -1,11 +1,17 @@
 import React from "react";
 import * as reactFiver from "react-feather";
 
-const Table = ({data, loading, deleteFood}) => {
+const Table = ({data, loading, deleteFood, getOneFood}) => {
     const handleDelete = (e) => {
         e.preventDefault();
         const id = document.querySelector(".delete").getAttribute("href");
         deleteFood(id);
+    }
+
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        const id = document.querySelector(".delete").getAttribute("href");
+        getOneFood(id);
     }
     
     return (
@@ -38,7 +44,7 @@ const Table = ({data, loading, deleteFood}) => {
                                 <td>{food.quantity}</td>
                                 <td>{food.quantity>0 ? "in stock" : "out stock"}</td>
                                 <td>
-                                    <reactFiver.Edit2 className="icon edit"/>
+                                    <reactFiver.Edit2 onClick={handleUpdate} className="icon edit"/>
                                     <a href={food._id} className="delete" onClick={handleDelete}><reactFiver.Trash2 onClick={handleDelete} className="icon delete"/></a>
                                 </td>
                             </tr>

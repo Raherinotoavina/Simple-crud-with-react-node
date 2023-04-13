@@ -1,7 +1,9 @@
-import React, {useEffect, useRef} from "react";
+import React, {useState} from "react";
 import axios from "axios";
 
-const Modale = ({setModale, addFood}) => {
+const Modale = ({setModale, addFood, food}) => {
+    const [name, setName] = useState(food ? food.food.name : "");
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const data = new FormData();
@@ -19,9 +21,17 @@ const Modale = ({setModale, addFood}) => {
             <form className="modale" onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="name" className="label">Name</label>
-                    <input type="text" className="input" id="name" name="name" placeholder="enter name"/>
+                    <input 
+                        type="text" 
+                        value={name} 
+                        onChange={(e) => setName(e.target.value)} 
+                        className="input" 
+                        id="name" 
+                        name="name" 
+                        placeholder="enter name"
+                    />
                 </div>
-                <div>
+                <div> 
                     <label htmlFor="price" className="label">Price</label>
                     <input type="number" className="input" id="price" name="price" placeholder="enter price"/>
                 </div>

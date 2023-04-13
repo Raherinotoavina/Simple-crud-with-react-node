@@ -98,3 +98,22 @@ exports.deleteFood = async (req, res) => {
         })
     }
 }
+
+// 4) GET ONE FOOD
+exports.getOneFood = async (req, res) => {
+    try {
+        const food = await Food.findById(req.params.id)
+
+        res.status(200).json({
+            status : "success",
+            data : {
+                food
+            }
+        })
+    } catch (err) {
+        res.status(402).json({
+            status : "fail",
+            message : err.message
+        })
+    }
+}

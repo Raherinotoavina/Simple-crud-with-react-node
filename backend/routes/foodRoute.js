@@ -11,6 +11,10 @@ router
     .get(foodController.getFood)
 
 router
+    .route("/getOneFood/:id")
+    .get(foodController.getOneFood)
+
+router
     .route("/deleteFood/:id")
     .delete(foodController.deleteFood)
 

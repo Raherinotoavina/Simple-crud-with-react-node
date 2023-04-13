@@ -11,8 +11,9 @@ const App = () => {
     const [modale, setModale] = useState(false);
     const [foods, setFoods] = useState([]);
     const [forceFetch, setForceFecth] = useState(false);
-    const foodsRef = useRef(foods);
+    const [food, setFood] = useState(null);
 
+    // Fecth Food
     useEffect(() => {
         const fetchData = async() => {
             const res = await axios({
@@ -23,8 +24,9 @@ const App = () => {
             setFoods(allFoods);
         }
         fetchData()
-    }, [foodsRef, forceFetch])
+    }, [forceFetch])
 
+    // Add Food
     const addFood = async (data) => {
         await axios({
             url : "http://127.0.0.1:8000/api/food/createFood",
@@ -34,6 +36,7 @@ const App = () => {
         setForceFecth(!forceFetch)
     }
 
+    // DeleteFood
     const deleteFood = async (id) => {
         await axios({
             method : "delete",
@@ -42,13 +45,41 @@ const App = () => {
         setForceFecth(!forceFetch)
     }
 
+    // Get One Food
+    const getOneFood = async (id) => {
+        const res = await axios({
+            method : "get",
+            url : `http://127.0.0.1:8000/api/food/getOneFood/${id}`
+        })
+        setFood(res.data.data);
+        setModale(true);
+    }
+
+    // UpdateFood
+    const updateFood = async (id) => {
+        console.log(id)
+    }
+
     return (
         <div className="app">
             <Header />
             <SearchBar/>
-            <Table data={foods} deleteFood={deleteFood}/>
-            <Footer setModale={setModale}/>
-            {modale && <Modale setModale={setModale} addFood={addFood}/>}
+            <Table 
+                setModale={setModale} 
+                data={foods} 
+                deleteFood={deleteFood}
+                getOneFood={getOneFood}
+            />
+            <Footer 
+                setModale={setModale}
+                setFood={setFood}
+            />
+            {modale && 
+                <Modale 
+                    setModale={setModale} 
+                    addFood={addFood}
+                    food={food}
+            />}
         </div>
     )
 }
